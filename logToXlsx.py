@@ -16,9 +16,10 @@ for line in lines[:-1]:
     time_index = time.find(':')
     time = int(time[:time_index])
 
-    url = "root" if not cells[6][0:] else cells[6][0:].partition('?')[0]
-    url = re.sub(r'/\d+', '', url)
 
+    url = "root" if not cells[6][0:] else cells[6][0:].partition('?')[0] #удаляет всю строку с ?
+    url = re.sub(r'product/\d+', 'product', url)
+    #url = re.sub(r'product/\d+', 'catalog', url)
     if (".js" in url) or (".css" in url) or (".ico" in url) or (".png" in url) or (".webp" in url) or (".svg" in url) or ("Wx" in url) or (".jpg" in url) or (".woff2" in url) or (".ttf" in url) or (".woff" in url):
         pass
     else:
@@ -52,4 +53,4 @@ for date, value in counter.items():
             sheet.cell(row=row_num, column=4).value = time
             row_num += 1
 
-workbook.save('Result\\outputTest1.xlsx')
+workbook.save('Result\\outputTest2.xlsx')
