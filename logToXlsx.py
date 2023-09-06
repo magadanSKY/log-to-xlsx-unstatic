@@ -20,8 +20,13 @@ for line in lines[:-1]:
 
 #прописываем форматирование
     url = "root" if not cells[6][0:] else cells[6][0:].partition('?')[0]
-    url = re.sub(r'product/\d+', 'product', url)
-    if (".js" in url) or (".css" in url) or (".ico" in url) or (".png" in url) or (".webp" in url) or (".svg" in url) or ("Wx" in url) or (".jpg" in url) or (".woff2" in url) or (".ttf" in url) or (".woff" in url):
+    url = re.sub(r'product/\d+', 'product/#sku', url)
+    url = re.sub(r'stores/\w\d+', 'stores/#store', url)
+    url = re.sub(r'catalog/\D+', 'catalog/nameOfCatalog/', url)
+    url = re.sub(r'brands/\D+', 'brands/nameOfBrand', url)
+    url = re.sub(r'blog/\D+', 'blog/nameOfBlog', url)
+
+    if (".js" in url) or (".css" in url) or (".ico" in url) or (".png" in url) or (".webp" in url) or (".svg" in url) or ("Wx" in url) or (".jpg" in url) or (".woff2" in url) or (".ttf" in url) or (".woff" in url) or (".gif" in url) or (".avif" in url):
         pass
     else:
         if date in counter:
@@ -54,4 +59,4 @@ for date, value in counter.items():
             sheet.cell(row=row_num, column=4).value = time
             row_num += 1
 
-workbook.save('Result\\outputTest2.xlsx')
+workbook.save('Result\\outputTest9.xlsx')
