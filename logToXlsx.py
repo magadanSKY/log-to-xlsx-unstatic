@@ -26,7 +26,7 @@ for line in lines[:-1]:
     url = re.sub(r'brands/\D+', 'brands/nameOfBrand', url)
     url = re.sub(r'blog/\D+', 'blog/nameOfBlog', url)
 
-    if (".js" in url) or (".css" in url) or (".ico" in url) or (".png" in url) or (".webp" in url) or (".svg" in url) or ("Wx" in url) or (".jpg" in url) or (".woff2" in url) or (".ttf" in url) or (".woff" in url) or (".gif" in url):
+    if (".js" in url) or (".css" in url) or (".ico" in url) or (".png" in url) or (".webp" in url) or (".svg" in url) or ("Wx" in url) or (".jpg" in url) or (".woff2" in url) or (".ttf" in url) or (".woff" in url) or (".gif" in url) or (".avif" in url):
         pass
     else:
         if date in counter:
