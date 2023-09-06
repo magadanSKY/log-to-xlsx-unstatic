@@ -1,11 +1,13 @@
 import openpyxl
 import re
 
-with open('Data\\access.2023-08-19.log', 'r') as file:
+
+with open('Data\\access.2023-08-19.log', 'r') as file: #выбор лог файла для парса
     content = file.read()
 
 lines = content.split('\n')
 
+#задаём ключи для поиска
 counter = {}
 for line in lines[:-1]:
     cells = line.split(' ')
@@ -16,10 +18,9 @@ for line in lines[:-1]:
     time_index = time.find(':')
     time = int(time[:time_index])
 
-
-    url = "root" if not cells[6][0:] else cells[6][0:].partition('?')[0] #удаляет всю строку с ?
+#прописываем форматирование
+    url = "root" if not cells[6][0:] else cells[6][0:].partition('?')[0]
     url = re.sub(r'product/\d+', 'product', url)
-    #url = re.sub(r'product/\d+', 'catalog', url)
     if (".js" in url) or (".css" in url) or (".ico" in url) or (".png" in url) or (".webp" in url) or (".svg" in url) or ("Wx" in url) or (".jpg" in url) or (".woff2" in url) or (".ttf" in url) or (".woff" in url):
         pass
     else:
@@ -35,7 +36,7 @@ for line in lines[:-1]:
             counter[date] = {url: {time:  1}}
 workbook = openpyxl.Workbook()
 
-
+#выводим все в .xlsx
 sheet = workbook.active
 
 sheet['A1'] = "Operation"
