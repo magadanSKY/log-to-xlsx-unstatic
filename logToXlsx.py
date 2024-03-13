@@ -2,7 +2,7 @@ import openpyxl
 import re
 
 
-with open('Data\\access.2023-08-19.log', 'r') as file: #выбор лог файла для парса
+with open('Data\\access.2023-09-19.log', 'r') as file: #выбор лог файла для парса
     content = file.read()
 
 lines = content.split('\n')
@@ -59,4 +59,4 @@ for date, value in counter.items():
             sheet.cell(row=row_num, column=4).value = time
             row_num += 1
 
-workbook.save('Result\\outputTest9.xlsx')
+workbook.save('Result\\outputTest.xlsx')
